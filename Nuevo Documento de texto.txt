@@ -1,0 +1,178 @@
+Objetive
+Create a console application that allows product inventory management
+
+
+
+Functional requirements
+the application must allow to enter new products with their name, price and quantity available.
+the application must allow to update the product data.
+the application must allow the visualization of the products and their stock.
+the application must allow delete products
+
+
+
+Non-functional requirements
+The system must be easy to use from a command console.
+The code must be modular, reusable and easy to maintain.
+The system must handle errors such as invalid entries.
+
+
+
+using System;
+using System.Collections.Generic;
+
+
+class Producto
+{
+    public string Nombre { get; set; }
+    public decimal Precio { get; set; }
+    public int Cantidad { get; set; }
+
+
+    public Producto(string nombre, decimal precio, int cantidad)
+    {
+        Nombre = nombre;
+        Precio = precio;
+        Cantidad = cantidad;
+    }
+}
+
+
+class Program
+{
+    static List<Producto> inventario = new List<Producto>();
+
+
+    static void Main()
+    {
+        bool salir = false;
+
+
+        while (!salir)
+        {
+            Console.WriteLine("\n--- App Inventory Managment ---");
+            Console.WriteLine("1. Add Product");
+            Console.WriteLine("2. Update stock");
+            Console.WriteLine("3. List Products");
+            Console.WriteLine("4. Delete Products");
+            Console.WriteLine("5. Exit");
+            Console.Write("Choose option: ");
+
+
+            string opcion = Console.ReadLine();
+
+
+            switch (opcion)
+            {
+                case "1":
+                    AgregarProducto();
+                    break;
+                case "2":
+                    ActualizarStock();
+                    break;
+                case "3":
+                    MostrarProductos();
+                    break;
+                case "4":
+                    EliminarProducto();
+                    break;
+                case "5":
+                    salir = true;
+                    Console.WriteLine("exiting the system...");
+                    break;
+                default:
+                    Console.WriteLine("Invalid option. Please try again.");
+                    break;
+            }
+        }
+    }
+
+
+    static void AgregarProducto()
+    {
+        Console.Write("Enter the product name: ");
+        string nombre = Console.ReadLine();
+
+
+        Console.Write("Enter the price of the product: ");
+        if (!decimal.TryParse(Console.ReadLine(), out decimal precio))
+        {
+            Console.WriteLine("Invalid Price.");
+            return;
+        }
+
+
+        Console.Write("Ingrese la cantidad de stock: ");
+        if (!int.TryParse(Console.ReadLine(), out int cantidad))
+        {
+            Console.WriteLine("Cantidad inválida.");
+            return;
+        }
+
+
+        inventario.Add(new Producto(nombre, precio, cantidad));
+        Console.WriteLine("Product successfully added.");
+    }
+
+
+    static void ActualizarStock()
+    {
+        Console.Write("Enter the name of the product to update: ");
+        string nombre = Console.ReadLine();
+
+
+        Producto producto = inventario.Find(p => p.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase));
+
+
+        if (producto == null)
+        {
+            Console.WriteLine("Product not found.");
+            return;
+        }
+
+
+        Console.Write("Enter the new stock quantity: ");
+        if (!int.TryParse(Console.ReadLine(), out int cantidad))
+        {
+            Console.WriteLine("Invalid quantity.");
+            return;
+        }
+
+
+        producto.Cantidad = cantidad;
+        Console.WriteLine("Stock successfully updated.");
+    }
+
+
+    static void MostrarProductos()
+    {
+        Console.WriteLine("\n--- Stock ---");
+        foreach (var producto in inventario)
+        {
+            Console.WriteLine($"Name: {producto.Nombre}, Price: {producto.Precio:C}, Stock: {producto.Cantidad}");
+        }
+    }
+
+
+    static void EliminarProducto()
+    {
+        Console.Write("Enter the name of the product to delete: ");
+        string nombre = Console.ReadLine();
+
+
+        Producto producto = inventario.Find(p => p.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase));
+
+
+        if (producto == null)
+        {
+            Console.WriteLine("Product not found.");
+            return;
+        }
+
+
+        inventario.Remove(producto);
+        Console.WriteLine("Product successfully removed.");
+    }
+}
+
+

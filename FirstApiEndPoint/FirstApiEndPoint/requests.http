@@ -1,0 +1,34 @@
+GET http://localhost:5251/
+###
+PUT http://localhost:5251/
+###
+DELETE http://localhost:5251/
+###
+POST http://localhost:5251/
+###
+GET http://localhost:5251/Prueba
+
+### Blogs
+GET http://localhost:5251/Blogs
+###
+GET http://localhost:5251/Blogs/0
+###
+GET http://localhost:5251/Blogs/1
+###
+POST http://localhost:5251/Blogs
+Content-Type: application/json
+
+{
+    "Title":"My nuevo blog",
+    "Body":"this is my new blog"
+}
+###
+DELETE http://localhost:5251/Blogs/2
+###
+PUT http://localhost:5251/Blogs/0
+Content-Type: application/json
+
+{
+    "Title":"My otro blog",
+    "Body":"this is my other blog"
+}
