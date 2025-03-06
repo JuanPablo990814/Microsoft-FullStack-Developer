@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Repositorios\\CursoFullStack\\FirstApiEndPoint\\FirstApiEndPoint\\FirstApiEndPoint.csproj": {}
+    "D:\\Repositorios\\Microsoft-FullStack-Developer\\FirstApiEndPoint\\FirstApiEndPoint\\FirstApiEndPoint.csproj": {}
   },
   "projects": {
-    "d:\\Repositorios\\CursoFullStack\\FirstApiEndPoint\\FirstApiEndPoint\\FirstApiEndPoint.csproj": {
+    "D:\\Repositorios\\Microsoft-FullStack-Developer\\FirstApiEndPoint\\FirstApiEndPoint\\FirstApiEndPoint.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Repositorios\\CursoFullStack\\FirstApiEndPoint\\FirstApiEndPoint\\FirstApiEndPoint.csproj",
+        "projectUniqueName": "D:\\Repositorios\\Microsoft-FullStack-Developer\\FirstApiEndPoint\\FirstApiEndPoint\\FirstApiEndPoint.csproj",
         "projectName": "FirstApiEndPoint",
-        "projectPath": "d:\\Repositorios\\CursoFullStack\\FirstApiEndPoint\\FirstApiEndPoint\\FirstApiEndPoint.csproj",
+        "projectPath": "D:\\Repositorios\\Microsoft-FullStack-Developer\\FirstApiEndPoint\\FirstApiEndPoint\\FirstApiEndPoint.csproj",
         "packagesPath": "C:\\Users\\JPabl\\.nuget\\packages\\",
-        "outputPath": "d:\\Repositorios\\CursoFullStack\\FirstApiEndPoint\\FirstApiEndPoint\\obj\\",
+        "outputPath": "D:\\Repositorios\\Microsoft-FullStack-Developer\\FirstApiEndPoint\\FirstApiEndPoint\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Archivos Programas (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,6 +50,12 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

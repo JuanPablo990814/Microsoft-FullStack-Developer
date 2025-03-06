@@ -32,3 +32,13 @@ Content-Type: application/json
     "Title":"My otro blog",
     "Body":"this is my other blog"
 }
+
+###
+POST http://localhost:5251/Blogs
+Content-Type: application/json
+X-Api-Key: thisIsABadPassword
+
+{
+    "title": "my title",
+    "body": "my body"
+}
